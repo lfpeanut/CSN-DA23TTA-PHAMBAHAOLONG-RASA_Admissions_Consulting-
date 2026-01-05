@@ -1,0 +1,71 @@
+recipe: default.v1
+
+assistant_id: 20251207-091740-visible-crop
+
+language: vi
+
+pipeline:
+  # Tokenizer - tách từ
+  - name: WhitespaceTokenizer
+  
+  # Regex Features
+  - name: RegexFeaturizer
+  
+  # Lexical and Syntactic Features
+  - name: LexicalSyntacticFeaturizer
+  
+  # Count Vectors - word level
+  - name: CountVectorsFeaturizer
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 2
+  
+  # Count Vectors - character level
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  
+  # Intent Classifier
+  - name: DIETClassifier
+    epochs: 200
+    constrain_similarities: true
+    entity_recognition: true
+    number_of_negative_examples: 20
+    maximum_positive_similarity: 0.8
+    maximum_negative_similarity: 0.4
+  
+  # Entity Synonym Mapper
+  - name: EntitySynonymMapper
+  
+  # Response Selector
+  - name: ResponseSelector
+    epochs: 100
+    constrain_similarities: true
+  
+  # Fallback Classifier
+  - name: FallbackClassifier
+    threshold: 0.6
+    ambiguity_threshold: 0.1
+
+policies:
+  # Memorization Policy
+  - name: MemoizationPolicy
+    max_history: 5
+  
+  # Rule Policy
+  - name: RulePolicy
+    core_fallback_threshold: 0.3
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: true
+  
+  # UnexpecTED Intent Policy
+  - name: UnexpecTEDIntentPolicy
+    max_history: 5
+    epochs: 200
+  
+  # TED Policy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 200
+    constrain_similarities: true

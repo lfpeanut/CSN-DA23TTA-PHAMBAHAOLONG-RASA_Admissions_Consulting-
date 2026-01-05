@@ -1,0 +1,239 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - thank
+  - ask_admission_info
+  - ask_documents
+  - ask_tuition_fee
+  - ask_payment_method
+  - ask_schedule
+  - ask_dorm
+  - ask_orientation
+  - ask_major_info
+  - ask_score
+  - ask_admission_method
+  - provide_major
+  - ask_eligibility
+  - ask_scholarship
+  - ask_student_card
+  - ask_facilities
+  - ask_contact
+  - bot_challenge
+  - restart
+  - mood_great
+  - mood_unhappy
+
+entities:
+  - major
+  - score
+  - admission_method
+
+slots:
+  major:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: major
+  
+  score:
+    type: float
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: score
+  
+  admission_method:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: admission_method
+  
+  is_eligible:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+responses:
+  utter_greet:
+    - text: "Xin chào! Em là trợ lý tư vấn tuyển sinh. Em có thể giúp gì cho anh/chị?"
+    - text: "Chào anh/chị! Em có thể hỗ trợ anh/chị tìm hiểu về thông tin tuyển sinh nhé!"
+    - text: "Hi! Rất vui được hỗ trợ anh/chị. Anh/chị cần tư vấn về vấn đề gì?"
+
+  utter_goodbye:
+    - text: "Tạm biệt! Chúc anh/chị một ngày tốt lành!"
+    - text: "Hẹn gặp lại anh/chị! Nếu cần hỗ trợ thêm, đừng ngại liên hệ nhé!"
+    - text: "Bye bye! Chúc anh/chị thành công!"
+
+  utter_thank:
+    - text: "Không có gì ạ! Em rất vui được giúp đỡ!"
+    - text: "Em rất sẵn lòng! Anh/chị cần gì cứ hỏi em nhé!"
+    - text: "Dạ, không có chi ạ!"
+
+  utter_admission_info:
+    - text: |
+        📋 **Thủ tục nhập học gồm các bước sau:**
+        
+        1️⃣ Nộp hồ sơ nhập học (bản gốc)
+        2️⃣ Đóng học phí học kỳ đầu tiên
+        3️⃣ Làm thẻ sinh viên
+        4️⃣ Đăng ký học phần
+        5️⃣ Tham gia chương trình tân sinh viên
+        
+        Anh/chị cần em hướng dẫn chi tiết bước nào không?
+
+  utter_documents:
+    - text: |
+        📄 **Hồ sơ nhập học bao gồm:**
+        
+        ✅ Giấy báo trúng tuyển (bản gốc)
+        ✅ Bằng tốt nghiệp THPT (bản gốc)
+        ✅ Học bạ THPT (bản gốc)
+        ✅ Giấy khai sinh (bản sao công chứng)
+        ✅ CMND/CCCD (bản sao)
+        ✅ 4 ảnh 3x4
+        ✅ Giấy chứng nhận ưu tiên (nếu có)
+
+  utter_tuition_fee:
+    - text: "💰 Học phí dao động từ 15-25 triệu đồng/năm tùy ngành. Anh/chị quan tâm ngành nào để em tư vấn cụ thể?"
+
+  utter_payment_method:
+    - text: |
+        💳 **Phương thức đóng học phí:**
+        
+        1️⃣ Chuyển khoản ngân hàng
+        2️⃣ Đóng trực tiếp tại phòng Kế toán
+        3️⃣ Thanh toán qua cổng thanh toán online của trường
+        
+        Thông tin tài khoản sẽ được cung cấp trong thông báo nhập học.
+
+  utter_schedule:
+    - text: "📅 Ngày khai giảng dự kiến vào đầu tháng 9. Lịch cụ thể sẽ được thông báo qua email và website của trường. Anh/chị đã nhận được email từ trường chưa?"
+
+  utter_dorm:
+    - text: |
+        🏠 **Thông tin ký túc xá:**
+        
+        💵 Phí: 500.000 - 1.000.000đ/tháng
+        👥 Phòng 4-8 người
+        ✨ Có đầy đủ tiện nghi: giường, tủ, wifi, điều hòa
+        📝 Đăng ký ngay khi nhập học
+        
+        Anh/chị có cần đăng ký ký túc xá không?
+
+  utter_orientation:
+    - text: "🎉 Có chương trình tân sinh viên được tổ chức vào tuần đầu tiên của năm học, bao gồm: giới thiệu trường lớp, gặp gỡ giảng viên, tham quan cơ sở vật chất và các hoạt động team building."
+
+  utter_scholarship:
+    - text: |
+        🎓 **Các loại học bổng:**
+        
+        1️⃣ Học bổng tân sinh viên (điểm cao)
+        2️⃣ Học bổng khuyến khích học tập (GPA ≥ 3.6)
+        3️⃣ Học bổng hoàn cảnh
+        4️⃣ Học bổng doanh nghiệp
+        
+        Anh/chị quan tâm loại học bổng nào?
+
+  utter_student_card:
+    - text: "🆔 Thẻ sinh viên được làm trong tuần đầu nhập học tại phòng Quản lý đào tạo. Anh/chị cần mang theo 2 ảnh 3x4 và CMND/CCCD."
+
+  utter_facilities:
+    - text: "🏫 Trường có: thư viện hiện đại, phòng gym, hồ bơi, sân thể thao, phòng lab, khu ăn uống, và nhiều câu lạc bộ sinh viên. Anh/chị muốn biết chi tiết về tiện ích nào?"
+
+  utter_score:
+    - text: "🎯 Điểm chuẩn thay đổi theo từng năm/ngành. Anh/chị quan tâm ngành nào để em hỗ trợ cụ thể nhé."
+
+  utter_admission_method:
+    - text: "🧾 Trường có các phương thức xét tuyển (học bạ/thi THPT/...). Anh/chị muốn hỏi phương thức nào?"
+
+  utter_contact:
+    - text: |
+        📞 **Thông tin liên hệ:**
+        
+        ☎️ Hotline: 1900 xxxx
+        📧 Email: @tvu.edu.vn
+        📍 Địa chỉ: Khóm 4, Phường 5, Đường Nguyễn Thiện Thành, Trà Vinh
+        👍 Fanpage: facebook.com/university
+        🏢 Văn phòng tuyển sinh: Nhà A, tầng 1
+
+  utter_iamabot:
+    - text: "🤖 Em là chatbot tư vấn tuyển sinh, được tạo ra để hỗ trợ anh/chị giải đáp các thắc mắc về tuyển sinh và nhập học. Em luôn sẵn sàng giúp đỡ anh/chị!"
+
+  utter_default:
+    - text: "Xin lỗi, em chưa hiểu rõ câu hỏi của anh/chị. Anh/chị có thể hỏi lại theo cách khác được không?"
+    - text: "Em chưa được đào tạo để trả lời câu hỏi này. Anh/chị có thể liên hệ hotline của trường để được hỗ trợ tốt hơn nhé!"
+
+  utter_ask_major:
+    - text: "Anh/chị quan tâm ngành nào? (Ví dụ: CNTT, Kinh tế, Marketing, Logistics, Kế toán, Quản trị kinh doanh)"
+
+  utter_ask_score:
+    - text: "Anh/chị cho em biết tổng điểm 3 môn xét tuyển được không? (Ví dụ: 24, 21.5)"
+
+  utter_ask_admission_method:
+    - text: "Anh/chị muốn xét tuyển theo phương thức nào? (Ví dụ: thi THPT, học bạ, đánh giá năng lực, tuyển thẳng)"
+
+  utter_major_list:
+    - text: |
+        📚 **Danh sách các ngành đào tạo:**
+        
+        💻 **Khối Công nghệ:**
+        • Công nghệ thông tin
+        
+        💼 **Khối Kinh tế - Quản trị:**
+        • Kinh tế
+        • Quản trị kinh doanh
+        • Kế toán
+        • Marketing
+        • Logistics
+        
+        Anh/chị muốn biết chi tiết ngành nào không?
+
+actions:
+  - action_session_start
+  - utter_greet
+  - utter_goodbye
+  - utter_thank
+  - utter_admission_info
+  - utter_documents
+  - utter_tuition_fee
+  - utter_payment_method
+  - utter_schedule
+  - utter_dorm
+  - utter_orientation
+  - utter_scholarship
+  - utter_student_card
+  - utter_facilities
+  - utter_contact
+  - utter_iamabot
+  - utter_default
+  - utter_ask_major
+  - utter_ask_score
+  - reset_counseling
+  - utter_ask_admission_method
+  - action_major_info
+  - validate_admission_counseling_form
+  - action_estimate_eligibility
+  - action_suggest_admission_method
+  - action_detailed_counseling
+  - action_reset_counseling
+  - action_provide_major_info
+  - action_check_eligibility
+  - action_faq
+
+forms:
+  admission_counseling_form:
+    required_slots:
+      - major
+      - score
+      - admission_method
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

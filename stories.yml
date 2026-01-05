@@ -1,0 +1,156 @@
+version: "3.1"
+
+stories:
+  # Story 1: Chào hỏi và hỏi thông tin cơ bản
+  - story: Basic greeting and admission info
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_admission_info
+    - action: utter_admission_info
+
+  # Story 2: Hỏi về hồ sơ và học phí
+  - story: Documents and tuition inquiry
+    steps:
+    - intent: ask_documents
+    - action: utter_documents
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+
+  # Story 3: Quy trình nhập học đầy đủ
+  - story: Complete admission process
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_admission_info
+    - action: utter_admission_info
+    - intent: ask_documents
+    - action: utter_documents
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+    - intent: ask_payment_method
+    - action: utter_payment_method
+    - intent: thank
+    - action: utter_thank
+
+  # Story 4: Hỏi về ký túc xá
+  - story: Dormitory inquiry
+    steps:
+    - intent: ask_dorm
+    - action: utter_dorm
+    - intent: ask_schedule
+    - action: utter_schedule
+
+  # Story 5: Hỏi về học bổng
+  - story: Scholarship inquiry
+    steps:
+    - intent: ask_scholarship
+    - action: utter_scholarship
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+
+  # Story 6: Hỏi về học bổng sau khi chào
+  - story: Greet then scholarship
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_scholarship
+    - action: utter_scholarship
+
+  # Story 7: Cơ sở vật chất và liên hệ
+  - story: Facilities and contact
+    steps:
+    - intent: ask_facilities
+    - action: utter_facilities
+    - intent: ask_contact
+    - action: utter_contact
+
+  # Story 8: Thẻ sinh viên và orientation
+  - story: Student card and orientation
+    steps:
+    - intent: ask_student_card
+    - action: utter_student_card
+    - intent: ask_orientation
+    - action: utter_orientation
+
+  # Story 9: Hỏi liên tiếp nhiều thông tin
+  - story: Multiple questions flow
+    steps:
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+    - intent: ask_scholarship
+    - action: utter_scholarship
+    - intent: ask_dorm
+    - action: utter_dorm
+
+  # Story 10: Bot challenge trong conversation
+  - story: Bot challenge then continue
+    steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+    - intent: ask_admission_info
+    - action: utter_admission_info
+
+  # Story 11: Từ chối và hỏi lại
+  - story: Deny and ask again
+    steps:
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+    - intent: deny
+    - intent: ask_scholarship
+    - action: utter_scholarship
+
+  # Story 12: Xác nhận và tiếp tục
+  - story: Affirm and continue
+    steps:
+    - intent: ask_dorm
+    - action: utter_dorm
+    - intent: affirm
+    - intent: ask_schedule
+    - action: utter_schedule
+
+  # Story 13: Happy path - hỏi đầy đủ và kết thúc
+  - story: Complete happy path
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_admission_info
+    - action: utter_admission_info
+    - intent: ask_documents
+    - action: utter_documents
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+    - intent: ask_scholarship
+    - action: utter_scholarship
+    - intent: ask_dorm
+    - action: utter_dorm
+    - intent: thank
+    - action: utter_thank
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # Story 14: Hỏi về ngành học cụ thể
+  - story: Ask about specific major
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: provide_major
+    - action: action_major_info
+    - intent: thank
+    - action: utter_thank
+
+  # Story 15: Kiểm tra điểm đầu vào
+  - story: Ask score info
+    steps:
+    - intent: ask_score
+    - action: utter_score
+    - intent: ask_admission_info
+    - action: utter_admission_info
+
+
+  # Story 16: Restart conversation
+  - story: Restart the conversation
+    steps:
+    - intent: restart
+    - action: action_restart
+    - action: utter_greet

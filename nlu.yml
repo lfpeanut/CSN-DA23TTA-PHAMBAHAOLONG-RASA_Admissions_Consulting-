@@ -1,0 +1,363 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - xin chào
+    - xin chào em
+    - xin chào anh
+    - xin chào chị
+    - chào
+    - chào bạn
+    - chào em
+    - chào em nhé
+    - chào anh
+    - chào anh ạ
+    - chào chị
+    - chào chị ạ
+    - chào ad
+    - hello there
+    - good morning
+    - good evening
+    - chào buổi sáng
+    - chào buổi chiều
+    - chào buổi tối
+    - cho em hỏi
+    - em muốn hỏi
+    - anh ơi
+    - chị ơi
+    - alo
+    - alô
+    - ê
+    - ui
+    - ơi
+    - có ai không
+    - có ai ở đây không
+    - xin chào bạn
+    - xin chào nhé
+
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - bye
+    - goodbye
+    - bye bye
+    - hẹn gặp lại
+    - good bye
+    - see you later
+    - see you
+    - cu
+    - good night
+    - chúc ngủ ngon
+    - thôi không cần hỏi nữa
+    - tạm biệt nhé
+    - em đi nhé
+
+- intent: affirm
+  examples: |
+    - yes
+    - có
+    - đúng
+    - đúng rồi
+    - đúng vậy
+    - chính xác
+    - ok
+    - okay
+    - được
+    - được rồi
+    - ừ
+    - oke
+    - vâng
+    - dạ
+    - đồng ý
+
+- intent: deny
+  examples: |
+    - no
+    - không
+    - không phải
+    - không đúng
+    - sai rồi
+    - ko
+    - k
+    - thôi
+    - thôi không cần
+    - không cần
+    - never
+    - chưa
+    - không đâu
+    - không ạ
+
+- intent: thank
+  examples: |
+    - cảm ơn
+    - cảm ơn em
+    - cảm ơn anh
+    - cảm ơn chị
+    - thanks
+    - thank you
+    - cảm ơn nhiều
+    - cảm ơn em nhiều
+    - thanks a lot
+    - em cảm ơn
+    - anh cảm ơn
+    - chị cảm ơn
+
+- intent: ask_admission_info
+  examples: |
+    - thủ tục nhập học như thế nào
+    - hướng dẫn nhập học
+    - nhập học cần làm gì
+    - quy trình nhập học
+    - các bước nhập học
+    - nhập học thế nào
+    - cho em hỏi về nhập học
+    - muốn nhập học phải làm gì
+    - thủ tục đầu vào
+    - làm sao để nhập học
+    - em muốn biết về nhập học
+    - hướng dẫn em nhập học
+
+- intent: ask_documents
+  examples: |
+    - hồ sơ nhập học gồm những gì
+    - cần giấy tờ gì để nhập học
+    - giấy tờ nhập học
+    - hồ sơ cần nộp
+    - cần chuẩn bị hồ sơ gì
+    - danh sách hồ sơ
+    - hồ sơ đầu vào
+    - giấy tờ cần thiết
+    - cần mang theo giấy tờ gì
+    - documents cần nộp
+    - hồ sơ bao gồm
+    - cho em hỏi về hồ sơ
+
+- intent: ask_tuition_fee
+  examples: |
+    - học phí bao nhiêu
+    - một năm tốn bao nhiêu tiền
+    - chi phí học tập
+    - mức học phí
+    - giá học phí
+    - học phí là bao nhiêu
+    - phí học một năm
+    - tổng chi phí học
+    - tuition fee
+    - học hết bao nhiêu tiền
+    - học phí mỗi kỳ
+    - học phí theo năm
+
+- intent: ask_payment_method
+  examples: |
+    - đóng học phí như thế nào
+    - phương thức thanh toán
+    - cách đóng tiền học
+    - đóng tiền ở đâu
+    - thanh toán học phí
+    - payment method
+    - nộp học phí thế nào
+    - có thể chuyển khoản không
+    - đóng học phí online được không
+    - tài khoản đóng học phí
+
+- intent: ask_schedule
+  examples: |
+    - khi nào khai giảng
+    - ngày khai giảng
+    - lịch khai giảng
+    - lịch nhập học
+    - bao giờ bắt đầu học
+    - thời gian khai giảng
+    - khai giảng vào lúc nào
+    - khi nào đi học
+    - schedule nhập học
+    - ngày bắt đầu học
+
+- intent: ask_dorm
+  examples: |
+    - ký túc xá như thế nào
+    - có ký túc xá không
+    - thông tin ký túc xá
+    - ktx thế nào
+    - ktx bao nhiêu tiền
+    - phí ký túc xá
+    - đăng ký ktx
+    - chỗ ở sinh viên
+    - dormitory
+    - có chỗ ở không
+    - có nội trú không
+
+- intent: ask_orientation
+  examples: |
+    - có chương trình tân sinh viên không
+    - orientation
+    - tân sinh viên
+    - chương trình đầu vào
+    - hoạt động tân sinh viên
+    - sự kiện chào tân sinh viên
+    - sinh hoạt đầu khóa
+    - có gặp gỡ giảng viên không
+
+- intent: ask_major_info
+  examples: |
+    - có những ngành nào
+    - danh sách các ngành
+    - ngành học
+    - em muốn biết về ngành
+    - thông tin ngành học
+    - major
+    - các ngành đào tạo
+    - trường có ngành gì
+
+
+- intent: ask_score
+  examples: |
+    - điểm chuẩn bao nhiêu
+    - cần bao nhiêu điểm
+    - điểm đầu vào
+    - yêu cầu điểm
+    - benchmark
+    - điểm trúng tuyển
+    - cần điểm gì
+
+- intent: ask_admission_method
+  examples: |
+    - phương thức xét tuyển
+    - xét tuyển như thế nào
+    - các hình thức tuyển sinh
+    - admission method
+    - tuyển sinh thế nào
+    - xét học bạ hay thi
+    - thi hay xét tuyển
+
+- intent: provide_major
+  examples: |
+    - em muốn học ngành công  nghệ thông tin
+    - ngành kinh tế
+    - công nghệ thông tin
+    - quản trị kinh doanh
+    - kế toán
+    - marketing
+    - luật
+    - y khoa
+    - kiến trúc
+    - ngành [CNTT](major)
+    - ngành [IT](major)
+
+- intent: ask_eligibility
+  examples: |
+    - điều kiện nhập học
+    - yêu cầu đầu vào
+    - em có đủ điều kiện không
+    - eligibility
+    - cần đáp ứng gì
+    - tiêu chuẩn tuyển sinh
+
+- intent: ask_scholarship
+  examples: |
+    - có học bổng không
+    - thông tin học bổng
+    - làm sao để được học bổng
+    - làm thế nào để có học bổng
+    - cách xin học bổng
+    - scholarship
+    - học bổng toàn phần
+    - điều kiện học bổng
+    - các loại học bổng
+    - xin học bổng như thế nào
+    - em muốn biết về học bổng
+    - học bổng như thế nào
+    - có hỗ trợ học bổng không
+    - trường có học bổng gì
+    - apply học bổng thế nào
+    - đăng ký học bổng ở đâu
+    - yêu cầu học bổng
+    - hỗ trợ tài chính
+    - miễn giảm học phí
+    - học bổng dành cho sinh viên mới
+    - em muốn xin học bổng
+    - tư vấn về học bổng
+    - cho em hỏi về học bổng
+    - làm sao để nhận học bổng
+    - quy trình xin học bổng
+
+- intent: ask_student_card
+  examples: |
+    - làm thẻ sinh viên ở đâu
+    - thẻ sinh viên
+    - student card
+    - id card
+    - làm thẻ thế nào
+    - thủ tục làm thẻ
+
+- intent: ask_facilities
+  examples: |
+    - cơ sở vật chất
+    - tiện ích trường
+    - facilities
+    - có những gì
+    - thư viện
+    - phòng lab
+    - sân thể thao
+    - có gym không
+    - tiện nghi
+
+- intent: ask_contact
+  examples: |
+    - liên hệ
+    - contact
+    - hotline
+    - số điện thoại
+    - địa chỉ
+    - email
+    - thông tin liên hệ
+    - văn phòng tuyển sinh ở đâu
+    - fanpage
+
+- intent: bot_challenge
+  examples: |
+    - bạn là ai
+    - bạn là bot à
+    - bạn là người không
+    - are you a bot
+    - are you human
+    - bạn là chatbot à
+    - ai tạo ra bạn
+
+- intent: restart
+  examples: |
+    - bắt đầu lại
+    - restart
+    - reset
+    - làm lại
+    - quay lại đầu
+    
+- intent: reset_counseling
+  examples: |
+    - reset tư vấn
+    - làm lại phần tư vấn
+    - xóa thông tin tư vấn
+    - tư vấn lại từ đầu
+    - đặt lại tư vấn
+
+- intent: mood_great
+  examples: |
+    - tuyệt vời
+    - great
+    - amazing
+    - perfect
+    - rất tốt
+    - tốt lắm
+    - hay quá
+
+- intent: mood_unhappy
+  examples: |
+    - buồn quá
+    - sad
+    - không vui
+    - tệ quá
+    - không tốt

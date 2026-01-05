@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hướng dẫn nhập học Tân Sinh Viên — Đại học Trà Vinh</title>
+  <meta name="description" content="Trang hướng dẫn nhập học cho tân sinh viên (demo) + chatbot tư vấn (Rasa) với tone xanh biển, vàng nhạt và trắng."/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"></script>
+<script>
+  WebChat.default(
+    {
+      initPayload: "/greet",
+      customData: { language: "vi" },
+      socketUrl: "http://localhost:5005",
+      socketPath: "/socket.io/",
+      title: "Tư vấn nhập học TVU",
+      subtitle: "Online 24/7",
+      showMessageDate: true
+    },
+    null
+  )
+
+</script>
+
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        <img class="tvu-logo" src="assets/tvu-logo.jpg" alt="Logo Trường Đại học Trà Vinh" />
+        <div>
+          <div>Trường Đại học Trà Vinh</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:650;">Hướng dẫn nhập học — Tân sinh viên</div>
+        </div>
+        <span class="badge">Chatbot tư vấn</span>
+      </div>
+
+      <nav class="navlinks" aria-label="Điều hướng">
+        <a href="#quytrinh">Quy trình</a>
+        <a href="#hosо">Hồ sơ</a>
+        <a href="#hocphi">Học phí</a>
+        <a href="#ky-tuc-xa">Ký túc xá</a>
+        <a href="#lienhe">Liên hệ</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div class="card hero-main">
+        <h1 class="hero-title">Trang hướng dẫn nhập học cho tân sinh viên</h1>
+        <p class="hero-sub">
+          Đây là website mẫu để bạn tích hợp chatbot Rasa vào trang hướng dẫn nhập học.
+          Nội dung bên dưới mang tính <strong>khung hướng dẫn</strong> (không thay thế thông báo chính thức).
+          Bạn có thể chỉnh lại câu chữ, mốc thời gian, học phí và địa điểm theo thông báo của trường.
+        </p>
+
+        <div class="pillrow" aria-label="Điểm nổi bật">
+          <div class="pill"><span class="dot"></span> Checklist hồ sơ nhập học</div>
+          <div class="pill"><span class="dot"></span> Lịch trình và các mốc cần nhớ</div>
+          <div class="pill"><span class="dot"></span> Chatbot trả lời nhanh (CNTT, Kế toán…)</div>
+        </div>
+
+        <div class="note">
+          Mẹo: Nếu bạn đã có intent như <code>ask_documents</code>, <code>ask_tuition_fee</code>, <code>ask_schedule</code>…
+          hãy dùng các nút gợi ý trong chatbot để test nhanh.
+        </div>
+      </div>
+
+      <aside class="card hero-side">
+        <h3 class="side-title">Bạn có thể hỏi chatbot:</h3>
+        <div class="callouts">
+          <div class="callout">
+            <strong>Hồ sơ nhập học gồm gì?</strong>
+            <span>Giấy tờ cần nộp, bản sao/công chứng, lưu ý khi chuẩn bị.</span>
+          </div>
+          <div class="callout">
+            <strong>Học phí & phương thức đóng</strong>
+            <span>Tra cứu mức học phí theo ngành, cách đóng học phí, thời hạn.</span>
+          </div>
+          <div class="callout">
+            <strong>Lịch nhập học / tuần sinh hoạt công dân</strong>
+            <span>Thời gian dự kiến, địa điểm, các bước làm thẻ SV.</span>
+          </div>
+        </div>
+
+        <div class="cta">
+          <button class="btn btn-primary" onclick="openChat()">
+            Mở chatbot
+            <span aria-hidden="true">💬</span>
+          </button>
+          <a class="btn btn-secondary" href="#quytrinh" style="text-decoration:none;">
+            Xem quy trình
+            <span aria-hidden="true">🧭</span>
+          </a>
+        </div>
+
+        <div class="hint">Nếu chatbot không trả lời, hãy kiểm tra Rasa server đang chạy và CORS.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="quytrinh">
+    <h2 class="section-title">Quy trình nhập học (gợi ý)</h2>
+    <p class="section-sub">
+      Bạn có thể thay đổi tên bước/địa điểm theo thực tế. Mục tiêu là giúp tân sinh viên làm đúng thứ tự, tránh thiếu giấy tờ.
+    </p>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="kicker"><span class="num">1</span> Xác nhận trúng tuyển</div>
+        <p>Kiểm tra thông báo, mã hồ sơ, ngành/diện tuyển sinh và các mốc thời gian quan trọng.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">2</span> Chuẩn bị hồ sơ</div>
+        <p>Chuẩn bị bản chính/bản sao theo checklist; sắp xếp theo thứ tự để nộp nhanh.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">3</span> Nộp hồ sơ & nhận giấy hẹn</div>
+        <p>Nộp tại điểm tiếp nhận (hoặc theo hình thức online nếu có). Nhận giấy hẹn/biên nhận.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">4</span> Đóng học phí / BHYT</div>
+        <p>Thực hiện theo hướng dẫn của trường: chuyển khoản/thu tại quầy. Giữ lại biên lai.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">5</span> Nhận thẻ SV / tài khoản</div>
+        <p>Hoàn tất thông tin sinh viên, nhận tài khoản cổng thông tin, email, thẻ sinh viên (nếu có).</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">6</span> Sinh hoạt công dân & nhập học</div>
+        <p>Tham gia tuần sinh hoạt công dân đầu khóa, làm quen quy chế, thời khóa biểu và dịch vụ hỗ trợ.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hosо">
+    <h2 class="section-title">Checklist hồ sơ nhập học</h2>
+    <p class="section-sub">
+      Checklist này là khung mẫu. Bạn hãy đối chiếu với thông báo nhập học của Trường/Phòng Đào tạo để cập nhật danh mục chính xác.
+    </p>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="kicker"><span class="num">A</span> Giấy tờ cá nhân</div>
+        <ul class="list">
+          <li>Giấy tờ tùy thân (theo yêu cầu của trường)</li>
+          <li>Ảnh thẻ (số lượng/kích thước tùy thông báo)</li>
+          <li>Giấy khai sinh (bản sao/bản trích lục nếu cần)</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">B</span> Hồ sơ học tập</div>
+        <ul class="list">
+          <li>Học bạ / bảng điểm</li>
+          <li>Bằng tốt nghiệp hoặc giấy chứng nhận tốt nghiệp tạm thời</li>
+          <li>Minh chứng ưu tiên (nếu có)</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">C</span> Biểu mẫu & biên lai</div>
+        <ul class="list">
+          <li>Phiếu đăng ký/nhập học (theo mẫu)</li>
+          <li>Biên lai đóng học phí/BHYT (nếu có)</li>
+          <li>Các tờ khai thông tin sinh viên</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      Bạn có thể hỏi chatbot: “<strong>Hồ sơ nhập học gồm những gì?</strong>” để bot trả lời theo intent <code>ask_documents</code>.
+    </div>
+  </section>
+
+  <section id="hocphi">
+    <h2 class="section-title">Học phí & phương thức đóng</h2>
+    <p class="section-sub">
+      Phần này nên lấy số liệu từ thông báo chính thức. Chatbot của bạn có intent <code>ask_tuition_fee</code> và <code>ask_payment_method</code>
+      nên có thể trả lời tự động theo ngành/diện tuyển sinh.
+    </p>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="kicker"><span class="num">1</span> Tra cứu học phí</div>
+        <p>Hỏi chatbot theo ngành: “em muốn học ngành công nghệ thông tin”, “kế toán”… để nhận tư vấn mức học phí dự kiến.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">2</span> Cách đóng</div>
+        <p>Chuyển khoản/đóng trực tiếp theo hướng dẫn. Luôn ghi rõ nội dung và lưu lại biên lai.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">3</span> Thời hạn</div>
+        <p>Đóng đúng hạn để hoàn tất thủ tục nhập học. Nếu trễ hạn, liên hệ bộ phận hỗ trợ để được hướng dẫn.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      Gợi ý test: bấm các nút nhanh trong chatbot: “Hồ sơ”, “Học phí”, “Lịch”.
+    </div>
+  </section>
+
+  <section id="ky-tuc-xa">
+    <h2 class="section-title">Ký túc xá & dịch vụ hỗ trợ</h2>
+    <p class="section-sub">
+      Nếu trường có ký túc xá, bạn nên đưa lên: điều kiện đăng ký, chi phí, giờ giấc, vật dụng nên mang theo.
+      Chatbot có intent <code>ask_dorm</code> và <code>ask_facilities</code> để trả lời phần này.
+    </p>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="kicker"><span class="num">✓</span> Đăng ký ở</div>
+        <p>Đăng ký theo hướng dẫn, cung cấp thông tin cần thiết và nhận xác nhận/phòng.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">✓</span> Vật dụng nên chuẩn bị</div>
+        <p>Đồ dùng cá nhân, thuốc cơ bản, giấy tờ quan trọng (bản gốc) để riêng và bảo quản.</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">✓</span> Dịch vụ trong khuôn viên</div>
+        <p>Thư viện, phòng máy, wifi, căn-tin, hỗ trợ sinh viên… (cập nhật theo thực tế).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="lienhe">
+    <h2 class="section-title">Liên hệ hỗ trợ</h2>
+    <p class="section-sub">
+      Điền thông tin liên hệ chính thức của trường vào đây (Phòng Đào tạo/CTSV/Hotline).
+      Bạn cũng có thể để chatbot làm “tổng đài ảo” trả lời các câu hỏi thường gặp.
+    </p>
+
+    <div class="grid-3">
+      <div class="tile">
+        <div class="kicker"><span class="num">☎</span> Tổng đài</div>
+        <p>Hotline: <em>(cập nhật theo thông báo)</em><br/>Giờ làm việc: <em>(cập nhật)</em></p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">✉</span> Email</div>
+        <p>Email hỗ trợ: <em>(cập nhật)</em><br/>Tiêu đề gợi ý: “Hỗ trợ nhập học — Họ tên — Mã hồ sơ”</p>
+      </div>
+      <div class="tile">
+        <div class="kicker"><span class="num">📍</span> Địa điểm</div>
+        <p>Địa chỉ tiếp nhận hồ sơ: <em>(cập nhật)</em><br/>Bản đồ: <em>(gắn Google Maps nếu muốn)</em></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="small">
+    </div>
+  </div>
+</footer>
+
+<div class="chat-launcher" aria-label="Chatbot">
+  <div class="bubble">Hỏi chatbot để được hướng dẫn ✨</div>
+  <button class="fab" onclick="toggleChat()" aria-label="Mở chatbot">💬</button>
+</div>
+
+<div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Chatbot tư vấn">
+  <div class="chat-header">
+    <div>
+      <div class="title">Chatbot tư vấn nhập học</div>
+      <div class="sub">Kênh REST Rasa • Tiếng Việt</div>
+    </div>
+    <button class="x" onclick="closeChat()" aria-label="Đóng">×</button>
+  </div>
+
+  <div class="chat-body" id="chatBody" aria-live="polite"></div>
+
+  <div class="quickrow" aria-label="Câu hỏi gợi ý">
+    <button class="quickbtn" onclick="quickAsk('Hồ sơ nhập học gồm những gì?')">Hồ sơ</button>
+    <button class="quickbtn" onclick="quickAsk('Học phí bao nhiêu?')">Học phí</button>
+    <button class="quickbtn" onclick="quickAsk('Lịch nhập học khi nào?')">Lịch</button>
+    <button class="quickbtn" onclick="quickAsk('Ký túc xá như thế nào?')">KTX</button>
+    <button class="quickbtn" onclick="quickAsk('Liên hệ hỗ trợ ở đâu?')">Liên hệ</button>
+  </div>
+
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Nhập câu hỏi… (vd: em muốn học ngành công nghệ thông tin)" autocomplete="off" />
+    <button class="send" onclick="send()">Gửi</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

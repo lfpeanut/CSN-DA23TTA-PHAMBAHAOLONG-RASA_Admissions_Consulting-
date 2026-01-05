@@ -1,0 +1,128 @@
+version: "3.1"
+
+rules:
+
+# Rule cơ bản - xin chào
+- rule: greet -> utter_greet
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+# Rule cơ bản - tạm biệt
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+# Rule cơ bản - cảm ơn
+- rule: Say thank you
+  steps:
+    - intent: thank
+    - action: utter_thank
+
+# Rule cơ bản - bot challenge
+- rule: Answer bot challenge
+  steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+
+# Rule thông tin tuyển sinh
+- rule: Provide admission info
+  steps:
+    - intent: ask_admission_info
+    - action: utter_admission_info
+
+- rule: Provide documents info
+  steps:
+    - intent: ask_documents
+    - action: utter_documents
+
+- rule: Provide tuition fee
+  steps:
+    - intent: ask_tuition_fee
+    - action: utter_tuition_fee
+
+- rule: Provide payment method
+  steps:
+    - intent: ask_payment_method
+    - action: utter_payment_method
+
+- rule: Provide schedule
+  steps:
+    - intent: ask_schedule
+    - action: utter_schedule
+
+- rule: Provide dorm info
+  steps:
+    - intent: ask_dorm
+    - action: utter_dorm
+
+- rule: Provide orientation info
+  steps:
+    - intent: ask_orientation
+    - action: utter_orientation
+
+- rule: Provide scholarship info
+  steps:
+    - intent: ask_scholarship
+    - action: utter_scholarship
+
+- rule: Provide student card info
+  steps:
+    - intent: ask_student_card
+    - action: utter_student_card
+
+- rule: Provide facilities info
+  steps:
+    - intent: ask_facilities
+    - action: utter_facilities
+
+- rule: Provide contact info
+  steps:
+    - intent: ask_contact
+    - action: utter_contact
+
+# Rule cho custom actions (chỉ hoạt động nếu bạn có actions server)
+- rule: Show FAQ
+  steps:
+    - intent: ask_faq
+    - action: action_faq
+
+- rule: Reset counseling
+  steps:
+    - intent: reset_counseling
+    - action: action_reset_counseling
+
+# Form tư vấn (nếu bạn có form này trong domain)
+- rule: Activate admission counseling form
+  steps:
+    - intent: ask_eligibility
+    - action: admission_counseling_form
+    - active_loop: admission_counseling_form
+
+- rule: Submit admission counseling form
+  condition:
+    - active_loop: admission_counseling_form
+  steps:
+    - action: admission_counseling_form
+    - active_loop: null
+    - action: action_estimate_eligibility
+    - action: utter_admission_info
+
+# Ngành học
+- rule: Show major list
+  steps:
+    - intent: ask_major_info
+    - action: utter_major_list
+
+# Điểm chuẩn
+- rule: Provide score info
+  steps:
+    - intent: ask_score
+    - action: utter_score
+
+# Phương thức xét tuyển
+- rule: Provide admission method
+  steps:
+    - intent: ask_admission_method
+    - action: utter_admission_method
