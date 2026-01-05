@@ -29,20 +29,20 @@ pip --version
 ---
 
 
-##3) Tạo môi trường ảo
+## 3) Tạo môi trường ảo
 
 python -m venv .venv
 .\.venv\Scripts\activate
 python -m pip install --upgrade pip
 
 
-##4) Tải rasa 
+## 4) Tải rasa 
 pip install rasa
 - Kiểm tra version
 rasa --version
 pip install rasa-sdk
 
-##5)Cấu trúc dự án
+## 5)Cấu trúc dự án
 .
 ├─ data/
 │  ├─ nlu.yml
@@ -60,7 +60,7 @@ pip install rasa-sdk
    ├─ styles.css
    └─ app.js              # nếu dùng REST UI
 
-##6) Train model và chạy
+## 6) Train model và chạy
 rasa train
 rasa run --enable-api --cors "*" --port 5005
 rasa run actions --port 5055
@@ -91,10 +91,11 @@ Bước 2: Nhúng vào file web/index.html (trước </body>)
   );
 </script>
 
-##8) Chạy website local (khuyến nghị để tránh lỗi CORS)
+## 8) Chạy website local (khuyến nghị để tránh lỗi CORS)
 
 Vào thư mục web:
 
 cd web
 python -m http.server 8080
+
 
